@@ -34,7 +34,7 @@ public class BitcoinURITest {
 
     private static final NetworkParameters MAINNET = MainNetParams.get();
     private static final NetworkParameters TESTNET = TestNet3Params.get();
-    private static final String MAINNET_GOOD_ADDRESS = "1KzTSfqjF2iKCduwz59nv2uqh1W2JsTxZH";
+    private static final String MAINNET_GOOD_ADDRESS = "VsXNd4p2cw3pKZp9v7uvRs8zCPGtZHbESd";
     private static final String MAINNET_GOOD_SEGWIT_ADDRESS = "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4";
     private static final String BITCOIN_SCHEME = MAINNET.getUriScheme();
 
@@ -267,7 +267,7 @@ public class BitcoinURITest {
         testObject = new BitcoinURI(MAINNET, BITCOIN_SCHEME + ":" + MAINNET_GOOD_ADDRESS
                 + "?amount=6543210&label=Hello%20World&message=Be%20well");
         assertEquals(
-                "BitcoinURI['amount'='654321000000000','label'='Hello World','message'='Be well','address'='1KzTSfqjF2iKCduwz59nv2uqh1W2JsTxZH']",
+                "BitcoinURI['amount'='654321000000000','label'='Hello World','message'='Be well','address'='VsXNd4p2cw3pKZp9v7uvRs8zCPGtZHbESd']",
                 testObject.toString());
     }
 
@@ -344,7 +344,7 @@ public class BitcoinURITest {
         // Unknown not required field
         testObject = new BitcoinURI(MAINNET, BITCOIN_SCHEME + ":" + MAINNET_GOOD_ADDRESS
                 + "?aardvark=true");
-        assertEquals("BitcoinURI['aardvark'='true','address'='1KzTSfqjF2iKCduwz59nv2uqh1W2JsTxZH']", testObject.toString());
+        assertEquals("BitcoinURI['aardvark'='true','address'='VsXNd4p2cw3pKZp9v7uvRs8zCPGtZHbESd']", testObject.toString());
 
         assertEquals("true", testObject.getParameterByName("aardvark"));
 
@@ -370,9 +370,9 @@ public class BitcoinURITest {
     @Test
     public void brokenURIs() throws BitcoinURIParseException {
         // Check we can parse the incorrectly formatted URIs produced by blockchain.info and its iPhone app.
-        String str = "viacoin://1KzTSfqjF2iKCduwz59nv2uqh1W2JsTxZH?amount=0.01000000";
+        String str = "viacoin://VsXNd4p2cw3pKZp9v7uvRs8zCPGtZHbESd?amount=0.01000000";
         BitcoinURI uri = new BitcoinURI(str);
-        assertEquals("1KzTSfqjF2iKCduwz59nv2uqh1W2JsTxZH", uri.getAddress().toString());
+        assertEquals("VsXNd4p2cw3pKZp9v7uvRs8zCPGtZHbESd", uri.getAddress().toString());
         assertEquals(CENT, uri.getAmount());
     }
 
